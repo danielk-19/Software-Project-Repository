@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open Index.html",
-            "file": "/Users/elenihailu/Documents/GitHub/Software-Project-Repository/Index.html"
+            "file": "/Users/Daniel/OneDrive/Documents/GitHub/Software-Project-Repository/Index.html"
         }
     ]
 }
