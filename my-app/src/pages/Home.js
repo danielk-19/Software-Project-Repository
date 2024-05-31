@@ -1,24 +1,19 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import {location} from "./form1"
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import AvailabilityContext from "../context/AvailabilityContext";
 
 export default function Home() {
-    const [available, setAvailability] = useState();
-
-    const handleAvailabilityChange = (event) => {
-        setAvailability(event.target.value);
-    };
+    const { available, handleAvailabilityChange } = useContext(AvailabilityContext);
 
     return (
-        <div className="center" value={available} onChange={handleAvailabilityChange}>
-            <div>
-                <Link to="/form1" value={true}>
-                    <button className="buttonDesign">In</button>
+        <div className="center">
+            <h1 className="status-circle">Status<br/>{available}</h1>
+            <div className="button-container">
+                <Link to="/form1">
+                    <button className="buttonDesign" onClick={() => handleAvailabilityChange("IN")}>In</button>
                 </Link>
-            </div>
-            <div>
-                <Link to="/form2" value={false}>
-                    <button className="buttonDesign">Out</button>
+                <Link to="/form2">
+                    <button className="buttonDesign" onClick={() => handleAvailabilityChange("OUT")}>Out</button>
                 </Link>
             </div>
         </div>

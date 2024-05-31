@@ -1,7 +1,13 @@
+/* Updated styles to add a settings button and center the header text horizontally */
 body {
   text-align: center;
   background-color: #282c34;
   color: white;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .container {
@@ -12,38 +18,94 @@ body {
   min-height: 70vh;
 }
 
-
- .container > div {
+.container > div {
   margin: 10px;
- }
+}
 
 .App-logo {
-  height: 40vmin;
+  height: 12vmin;
+  width: 12vmin;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #20232a;
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
-.App-header {
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
+.header-content {
+  display: flex;
+  align-items: center;
+  flex: 1; /* Grow to fill available space */
+}
+
+.header-content h1 {
+  font-size: 2rem;
+  margin: 0 auto; /* Center horizontally */
+}
+
+.settings-button {
+  background-color: #262930;
+  border: none;
+  height: 5rem;
+  width: 5rem; /* Adjust size as needed */
   color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 50%; /* Makes it circular */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.settings-icon {
+  height: 4rem;
+  width: 4rem;
+}
+
+.header-decoration {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 5px;
+  background: linear-gradient(to right, #ff6f61, #de3576, #a32cc4);
+  border-radius: 5px;
 }
 
 .center {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.status-circle {
+  width: 200px; 
+  height: 200px; 
+  border-radius: 50%; 
+  background-color: rgb(80, 78, 74); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 36px;
+  margin-bottom: 15vmin;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .buttonDesign {
   display: inline-block;
-  justify-content: center;
   color: white;
   border-radius: 5px;
   background-color: rgb(80, 78, 74);
@@ -52,14 +114,22 @@ body {
   cursor: pointer;
   font-size: 18px;
   width: 200px;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 20px;
   transition: background-color 0.3s ease;
 }
 
-/*@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}*/
+.buttonDesign:hover {
+  background-color: rgb(100, 98, 94);
+}
+
+.footer {
+  background-color: #20232a;
+  padding: 5px 0;
+  color: white;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+}
