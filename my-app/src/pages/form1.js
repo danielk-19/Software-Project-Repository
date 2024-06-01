@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
+import { SettingsContext } from '../context/SettingsContext';
 
 export default function Form1() {
   const [selectedTime, setSelectedTime] = useState('');
   const [location, setLocation] = useState('');
+  const { settingsData } = useContext(SettingsContext);
 
   const handleTimeChange = (event) => {
     setSelectedTime(event.target.value);
@@ -17,7 +19,10 @@ export default function Form1() {
     <div className="container center">
 
         <div>
-            <button value="Library" onClick={handleLocationChange} className="buttonDesign">Default Room</button>
+            <button 
+              value={settingsData.setDefault === "" ? "Media Center" : settingsData.setDefault} 
+              onClick={handleLocationChange} className="buttonDesign"
+            >Default Room</button>
         </div>
 
         <div>
