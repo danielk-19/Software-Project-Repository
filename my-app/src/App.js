@@ -8,6 +8,7 @@ import Form2 from "./pages/form2";
 import Settings from "./pages/settings";
 import { AvailabilityProvider } from "./context/AvailabilityProvider";
 import { SettingsProvider } from "./context/SettingsContext";
+import { LocationInfoProvider } from "./context/LocationInfoContext";
 import './App.css';
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
   };
 
   return (
+    <LocationInfoProvider>
     <SettingsProvider>
     <AvailabilityProvider>
       <Router>
@@ -52,5 +54,6 @@ export default function App() {
       </Router>
     </AvailabilityProvider>
     </SettingsProvider>
+    </LocationInfoProvider>
   );
 }

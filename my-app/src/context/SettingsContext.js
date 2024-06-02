@@ -5,7 +5,7 @@ const SettingsContext = createContext();
 const SettingsProvider = ({ children }) => {
     const [settingsData, setSettingsData] = useState(() => {
         const storedData = localStorage.getItem('settingsData');
-        return storedData ? JSON.parse(storedData) : { setDefault: "" };
+        return storedData ? JSON.parse(storedData) : { setDefault: "", textBoxes: [] };
     });
 
     useEffect(() => {
@@ -21,6 +21,7 @@ const SettingsProvider = ({ children }) => {
             {children}
         </SettingsContext.Provider>
     );
+
 };
 
 export { SettingsContext, SettingsProvider };

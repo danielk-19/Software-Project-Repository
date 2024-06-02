@@ -1,46 +1,62 @@
 import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
 import { SettingsContext } from '../context/SettingsContext';
+import { LocationInfoContext } from '../context/LocationInfoContext';
 
 export default function Form1() {
-  const [selectedTime, setSelectedTime] = useState('');
-  const [location, setLocation] = useState('');
+  const { locationInfoData, updateLocationInfoData } = useContext(LocationInfoContext);
   const { settingsData } = useContext(SettingsContext);
 
+  const [localLocationInfo, setLocalLocationInfo] = useState(locationInfoData);
+
   const handleTimeChange = (event) => {
-    setSelectedTime(event.target.value);
+    const newTime = event.target.value;
+    setLocalLocationInfo((prev) => ({ ...prev, currentTime: newTime }));
   };
 
   const handleLocationChange = (event) => {
-    setLocation(event.target.value);
+    const newLocation = event.target.value;
+    setLocalLocationInfo((prev) => ({ ...prev, currentLocation: newLocation }));
+  };
+
+  const handleSubmitForm1 = (e) => {
+    e.preventDefault();
+    updateLocationInfoData(localLocationInfo);
   };
 
   return (
     <div className="container center">
 
-        <div>
+        <div className="button-container">
             <button 
               value={settingsData.setDefault === "" ? "Media Center" : settingsData.setDefault} 
               onClick={handleLocationChange} className="buttonDesign"
             >Default Room</button>
+            {settingsData.textBoxes.map((textBoxInfo) => (
+              <button
+                key={textBoxInfo.id}
+                value={textBoxInfo.value}
+                onClick={handleLocationChange}
+              >{textBoxInfo.value}</button>
+            ))}
         </div>
 
         <div>
-        <form>
+        <form onSubmit={handleSubmitForm1} className="button-container">
             <label>
                 Location:
-                <input type="text" value={location} onChange={handleLocationChange} />
+                <input type="text" value={localLocationInfo.currentLocation} onChange={handleLocationChange} />
             </label>
-            {location && (
+            {localLocationInfo.currentLocation && (
             <div>
                 <label>
                 (Optional) Available until:
-                <input type="time" value={selectedTime} onChange={handleTimeChange} />
+                <input type="time" value={localLocationInfo.currentTime} onChange={handleTimeChange} />
                 </label>
             </div>
             )}
+            <input type="submit" value="Apply" />
         </form>
-        <p>{location}, {selectedTime}</p>
         </div>
 
         <div>
