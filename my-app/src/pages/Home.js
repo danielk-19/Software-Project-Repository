@@ -7,9 +7,15 @@ export default function Home() {
     const { available, handleAvailabilityChange } = useContext(AvailabilityContext);
     const { locationInfoData } = useContext(LocationInfoContext);
 
-    const redirectToAnotherSite = (message) => {
+    const sendData = (data) => {
         const siteUrl = 'https://sites.google.com/view/wwwfalconlibraryorg';
-        window.parent.postMessage(message, siteUrl);
+        const message = { availability: data };
+
+        const otherWindow = window.open(siteUrl);
+
+        otherWindow.addEventListener('load', () => {
+            otherWindow.postMessage(message, siteUrl);
+        });
     };
 
     return (
@@ -23,7 +29,7 @@ export default function Home() {
                     <button className="buttonDesign" onClick={() => handleAvailabilityChange("OUT")}>Out</button>
                 </Link>
             </div>
-            <button className="buttonDesign" onClick={() => redirectToAnotherSite(available)}>Update</button>
+            <button className="buttonDesign" onClick={() => sendData(available)}>Update</button>
         </div>
     );
 }
