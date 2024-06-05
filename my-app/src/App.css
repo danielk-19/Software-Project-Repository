@@ -96,6 +96,7 @@ body {
   color: white;
   font-size: 36px;
   margin-bottom: 15vmin;
+  border: 2px solid rgb(255, 182, 193);
 }
 
 .button-container {
@@ -109,7 +110,7 @@ body {
   color: white;
   border-radius: 5px;
   background-color: rgb(80, 78, 74);
-  border: none;
+  /*border: none;*/
   margin-bottom: 10px;
   cursor: pointer;
   font-size: 18px;
@@ -118,6 +119,7 @@ body {
   text-decoration: none;
   padding: 10px 20px;
   transition: background-color 0.3s ease;
+  border: 2px solid rgb(255, 182, 193);
 }
 
 .buttonDesign:hover {
