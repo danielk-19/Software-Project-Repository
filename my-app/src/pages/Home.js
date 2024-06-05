@@ -2,20 +2,19 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import AvailabilityContext from "../context/AvailabilityContext";
 import { LocationInfoContext } from "../context/LocationInfoContext";
+import axios from 'axios';
 
 export default function Home() {
     const { available, handleAvailabilityChange } = useContext(AvailabilityContext);
     const { locationInfoData } = useContext(LocationInfoContext);
 
-    const sendData = (data) => {
-        const siteUrl = 'https://sites.google.com/view/wwwfalconlibraryorg';
-        const message = { availability: data };
-
-        const otherWindow = window.open(siteUrl);
-
-        otherWindow.addEventListener('load', () => {
-            otherWindow.postMessage(message, siteUrl);
-        });
+    const sendData = async () => {
+        try {
+          await axios.post('https://location-updater.herokuapp.com/api/data', { available });
+          alert('Data sent successfully');
+        } catch (error) {
+          console.error('Error:', error);
+        }
     };
 
     return (
@@ -29,7 +28,7 @@ export default function Home() {
                     <button className="buttonDesign" onClick={() => handleAvailabilityChange("OUT")}>Out</button>
                 </Link>
             </div>
-            <button className="buttonDesign" onClick={() => sendData(available)}>Update</button>
+            <button className="buttonDesign" onClick={sendData}>Update</button>
         </div>
     );
 }
