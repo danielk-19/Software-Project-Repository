@@ -24,24 +24,24 @@ export default function Form2() {
     updateLocationInfoData(localLocationInfo);
   };
     return (
-        <div>
+        <div className="center">
             <div className="button-container">
             <button 
-              value="Testing: " 
+              value="Testing" 
               onClick={handleLocationChange} className="buttonDesign"
             >Testing</button>
             
             </div>
             <div className="button-container">
             <button 
-              value="Meeting: " 
+              value="Meeting" 
               onClick={handleLocationChange} className="buttonDesign"
             >Meeting</button>
             
             </div>
             <div className="button-container">
             <button 
-              value="Out of School: " 
+              value="Out of School" 
               onClick={handleLocationChange} className="buttonDesign"
             >Out of School</button>
             
