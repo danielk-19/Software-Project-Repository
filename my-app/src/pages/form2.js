@@ -39,7 +39,13 @@ export default function Form2() {
             >Meeting</button>
             
             </div>
+            <div className="button-container">
+            <button 
+              value="Out of School: " 
+              onClick={handleLocationChange} className="buttonDesign"
+            >Out of School</button>
             
+            </div>
             
             <div>
                 <form onSubmit={handleSubmitForm2} className="button-container">
