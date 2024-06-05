@@ -36,7 +36,7 @@ export default function Form1() {
               <button
                 key={textBoxInfo.id}
                 value={textBoxInfo.value}
-                onClick={handleLocationChange}
+                onClick={handleLocationChange} className = "buttonDesign"
               >{textBoxInfo.value}</button>
             ))}
         </div>
