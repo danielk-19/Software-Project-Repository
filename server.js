@@ -5,9 +5,10 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://cloudchasers:joshuaTang123!@software-project.yrguefx.mongodb.net/?retryWrites=true&w=majority&appName=software-project', {
+mongoose.connect('mongodb+srv://cloudchasers:joshuaTang123%21@software-project.yrguefx.mongodb.net/software-project?retryWrites=true&w=majority&appName=software-project', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  ssl: true
 });
 
 const dataSchema = new mongoose.Schema({
