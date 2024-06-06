@@ -37,7 +37,7 @@ app.post('/api/data', async (req, res) => {
 });
 
 // API endpoint to fetch all data
-app.get('/api/data', async (req, res) => {
+app.get('/api/data', async (req, res, next) => {
   // const allData = await Data.find();
   // res.json(allData);
   console.log(`CORS middleware applied to ${req.method} ${req.url}`); 
