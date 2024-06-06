@@ -18,13 +18,14 @@ const dataSchema = new mongoose.Schema({
 const Data = mongoose.model('Data', dataSchema);
 
 const app = express();
-app.use(bodyParser.json());
+
 // Configure CORS options 
 const corsOptions = { origin: 'https://danielk-19.github.io',  optionsSuccessStatus: 200, }; 
 // Apply CORS middleware 
 app.use(cors(corsOptions)); 
 // Enable preflight requests for all routes 
 app.options('*', cors(corsOptions));
+app.use(bodyParser.json());
 
 // API endpoint to receive data
 app.post('/api/data', async (req, res) => {
@@ -36,8 +37,10 @@ app.post('/api/data', async (req, res) => {
 
 // API endpoint to fetch all data
 app.get('/api/data', async (req, res) => {
-  const allData = await Data.find();
-  res.json(allData);
+  // const allData = await Data.find();
+  // res.json(allData);
+  console.log(`CORS middleware applied to ${req.method} ${req.url}`); 
+  next();
 });
 
 const PORT = process.env.PORT || 5000;
