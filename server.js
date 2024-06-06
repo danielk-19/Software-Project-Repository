@@ -31,8 +31,8 @@ const connectWithRetry = () => {
   mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    ssl: true,
-    sslValidate: true,
+    tls: true,
+    tlsAllowInvalidCertificates: false, // Ensures certificates are validated
   }).then(() => {
     console.log('MongoDB is connected');
   }).catch((err) => {
