@@ -10,7 +10,7 @@ export default function Home() {
 
     const sendData = async () => {
         try {
-          await axios.post('https://location-updater-c06f63b0f980.herokuapp.com/api/data', { available });
+          await axios.post('https://location-updater-c06f63b0f980.herokuapp.com/api/data', { available }, { headers: {'Content-Type': 'application/json'} });
           alert('Data sent successfully');
         } catch (error) {
           console.error('Error:', error);

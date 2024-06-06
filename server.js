@@ -19,6 +19,7 @@ const Data = mongoose.model('Data', dataSchema);
 
 const app = express();
 app.use(bodyParser.json());
+app.options('*', cors());
 app.use(cors("*"));
 
 app.use((req, res, next) => {
