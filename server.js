@@ -3,9 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-
-
-
+ 
 const app = express();
  
 // Middleware to redirect HTTP to HTTPS
@@ -17,7 +15,7 @@ app.use((req, res, next) => {
 });
  
 const corsOptions = {
-  origin: 'https://danielk-19.github.io', // Replace with your frontend's URL
+  origin: 'https://danielk-19.github.io/Software-Project-Repository/', // Replace with your frontend's URL
   optionsSuccessStatus: 200,
 };
  
@@ -31,7 +29,10 @@ const uri = process.env.MONGODB_URI || 'mongodb+srv://cloudchasers:joshuaTang123
 const connectWithRetry = () => {
   console.log('MongoDB connection with retry');
   mongoose.connect(uri, {
-    ssl: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    ssl: true,
+    sslValidate: true,
   }).then(() => {
     console.log('MongoDB is connected');
   }).catch((err) => {
@@ -41,16 +42,16 @@ const connectWithRetry = () => {
 };
  
 connectWithRetry();
-
+ 
 const dataSchema = new mongoose.Schema({
   data: String,
   timestamp: { type: Date, default: Date.now },
 });
-
+ 
 const Data = mongoose.model('Data', dataSchema);
-
+ 
 app.use(bodyParser.json());
-
+ 
 // API endpoint to receive data
 app.post('/api/data', async (req, res) => {
   const { data } = req.body;
@@ -58,15 +59,22 @@ app.post('/api/data', async (req, res) => {
   await newData.save();
   res.status(201).send('Data received');
 });
-
+ 
 // API endpoint to fetch all data
 app.get('/api/data', async (req, res, next) => {
-  // const allData = await Data.find();
-  // res.json(allData);
-  console.log(`CORS middleware applied to ${req.method} ${req.url}`); 
-  next();
+  try {
+    const allData = await Data.find();
+    res.json(allData);
+  } catch (err) {
+    next(err);
+  }
 });
-
+ 
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+ 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
