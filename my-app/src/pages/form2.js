@@ -1,11 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
-import { SettingsContext } from '../context/SettingsContext';
 import { LocationInfoContext } from '../context/LocationInfoContext';
 
 export default function Form2() {
   const { locationInfoData, updateLocationInfoData } = useContext(LocationInfoContext);
-  const { settingsData } = useContext(SettingsContext);
 
   const [localLocationInfo, setLocalLocationInfo] = useState(locationInfoData);
 
@@ -23,6 +21,7 @@ export default function Form2() {
     e.preventDefault();
     updateLocationInfoData(localLocationInfo);
   };
+
     return (
         <div className="center">
             <div className="button-container">
