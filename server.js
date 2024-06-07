@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 });
  
 const corsOptions = {
-  origin: 'https://danielk-19.github.io/Software-Project-Repository/', // Replace with your frontend's URL
+  origin: 'https://danielk-19.github.io', // Replace with your frontend's URL without the path
   optionsSuccessStatus: 200,
 };
  
@@ -29,8 +29,6 @@ const uri = process.env.MONGODB_URI || 'mongodb+srv://cloudchasers:joshuaTang123
 const connectWithRetry = () => {
   console.log('MongoDB connection with retry');
   mongoose.connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
     tls: true,
     tlsAllowInvalidCertificates: false, // Ensures certificates are validated
   }).then(() => {
