@@ -12,7 +12,6 @@ export default function Home() {
         try {
           await axios.post('https://location-updater-c06f63b0f980.herokuapp.com/api/data', { available }, { headers: {'Content-Type': 'application/json'} });
           alert('Data sent successfully');
-          console.log(available);
         } catch (error) {
           console.error('Error:', error);
         }
