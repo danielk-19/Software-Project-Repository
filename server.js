@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 });
  
 const corsOptions = {
-  origin: 'https://danielk-19.github.io', // Replace with your frontend's URL without the path
+  origin: ['https://danielk-19.github.io', 'https://sites.google.com'],
   optionsSuccessStatus: 200,
 };
  
