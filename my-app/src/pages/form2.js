@@ -55,16 +55,17 @@ export default function Form2() {
                 {localLocationInfo.currentLocation && (
                 <div>
                     <label>
-                    (Optional) Available until:
+                    Available until:
                     <input type="time" value={localLocationInfo.currentTime} onChange={handleTimeChange} />
                     </label>
                 </div>
                 )}
-                <input type="submit" value="Apply" />
+                <br />
+                <input type="submit" value="Apply" className="buttonDesign" />
             </form>
             </div>
 
-            <div className="container center">
+            <div className="marginTop">
                 <Link to="/">
                     <button className="buttonDesign">Back to Home</button>
                 </Link>

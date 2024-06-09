@@ -23,7 +23,7 @@ function Home() {
                     <button className="buttonDesign" onClick={() => handleAvailabilityChange("OUT")}>Out</button>
                 </Link>
             </div>
-            <button onClick={confirmUpdate}>Update</button>
+            <button onClick={confirmUpdate} className="buttonDesign">Update</button>
         </div>
     );
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import AvailabilityContext from "../context/AvailabilityContext";
 import { LocationInfoContext } from "../context/LocationInfoContext";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import * as Realm from "realm-web";
 
 const REALM_APP_ID = "location-updater-database-xxrruor";
@@ -11,6 +11,7 @@ const credentials = Realm.Credentials.anonymous();
 function Sender() {
     const { available } = useContext(AvailabilityContext);
     const { locationInfoData } = useContext(LocationInfoContext);
+    const navigate = useNavigate();
     const location = useLocation();
     const doUpdate = location.state?.doUpdate;
     
@@ -55,6 +56,9 @@ function Sender() {
                 await handleSaveData();
             }
             await fetchSharedData();
+            if (doUpdate) {
+                navigate("/");
+            }
         };
 
         updateAndFetchData();
@@ -66,13 +70,13 @@ function Sender() {
     }
 
     return (
-        <div>
+        <div className="status-display">
             <h1>Ms. Blair's Location</h1>
-            <ul>
+            <div>
                 {localData.map((item, index) => (
-                    <li key={index}>{item.text}</li>
+                    <h2 key={index}>{item.text}</h2>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }
