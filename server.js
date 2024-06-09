@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 });
  
 const corsOptions = {
-  origin: ['https://danielk-19.github.io', 'https://sites.google.com'],
+  origin: 'https://danielk-19.github.io',
   optionsSuccessStatus: 200,
 };
  

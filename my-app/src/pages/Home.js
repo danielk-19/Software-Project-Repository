@@ -2,20 +2,10 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import AvailabilityContext from "../context/AvailabilityContext";
 import { LocationInfoContext } from "../context/LocationInfoContext";
-import axios from 'axios';
 
-export default function Home() {
+function Home() {
     const { available, handleAvailabilityChange } = useContext(AvailabilityContext);
     const { locationInfoData } = useContext(LocationInfoContext);
-
-    const sendData = async () => {
-        try {
-          await axios.post('https://location-updater-c06f63b0f980.herokuapp.com/api/data', { available }, { headers: {'Content-Type': 'application/json'} });
-          alert('Data sent successfully');
-        } catch (error) {
-          console.error('Error:', error);
-        }
-    };
 
     return (
         <div className="center">
@@ -28,7 +18,8 @@ export default function Home() {
                     <button className="buttonDesign" onClick={() => handleAvailabilityChange("OUT")}>Out</button>
                 </Link>
             </div>
-            <button className="buttonDesign" onClick={sendData}>Update</button>
         </div>
     );
 }
+
+export default Home;
