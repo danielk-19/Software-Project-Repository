@@ -1,11 +1,16 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AvailabilityContext from "../context/AvailabilityContext";
 import { LocationInfoContext } from "../context/LocationInfoContext";
 
 function Home() {
     const { available, handleAvailabilityChange } = useContext(AvailabilityContext);
     const { locationInfoData } = useContext(LocationInfoContext);
+    const navigate = useNavigate();
+
+    const confirmUpdate = () => {
+        navigate("/data-sender", { state: { doUpdate: true } });
+    };
 
     return (
         <div className="center">
@@ -18,6 +23,7 @@ function Home() {
                     <button className="buttonDesign" onClick={() => handleAvailabilityChange("OUT")}>Out</button>
                 </Link>
             </div>
+            <button onClick={confirmUpdate}>Update</button>
         </div>
     );
 }
