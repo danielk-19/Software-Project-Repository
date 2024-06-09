@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Form1 from "./pages/form1";
 import Form2 from "./pages/form2";
 import Settings from "./pages/settings";
+import Sender from "./pages/data-sender";
 import { AvailabilityProvider } from "./context/AvailabilityProvider";
 import { SettingsProvider } from "./context/SettingsContext";
 import { LocationInfoProvider } from "./context/LocationInfoContext";
@@ -42,6 +43,7 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/form1" element={<Form1 />} />
               <Route path="/form2" element={<Form2 />} />
+              <Route path="/data-sender" element={<Sender />} />
             </Routes>
           </div>
           <footer className="footer">
