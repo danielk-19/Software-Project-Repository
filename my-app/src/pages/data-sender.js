@@ -9,8 +9,8 @@ function Sender() {
     const { available } = useContext(AvailabilityContext);
     const { locationInfoData } = useContext(LocationInfoContext);
 
-    const [ localData, setLocalData ] = useState([]);
-    const [ isLoading, setIsLoading ] = useState(true); // Add loading state
+    const [localData, setLocalData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const app = new Realm.App({ id: REALM_APP_ID });
     const credentials = Realm.Credentials.anonymous();
@@ -22,11 +22,13 @@ function Sender() {
             const collection = mongodb.db("software-project").collection("datas");
 
             const data = await collection.find({});
-            setLocalData(data);
-            setIsLoading(false); // Set loading state to false after data fetch
+            if (data.length > 0) {
+                setLocalData(data);
+                setIsLoading(false);
+            }
         } catch (error) {
             console.error("Error fetching data:", error);
-            setIsLoading(false); // Ensure loading state is set to false in case of error
+            setIsLoading(false);
         }
     };
 
@@ -38,26 +40,26 @@ function Sender() {
 
             await collection.deleteMany({});
             await collection.insertMany([{ text: available }, { text: locationInfoData.currentLocation }, { text: locationInfoData.currentTime }]);
-            fetchSharedData(); // Refetch data after saving
+            fetchSharedData();
         } catch (error) {
             console.error("Error saving data:", error);
         }
     };
 
     useEffect(() => {
-        fetchSharedData();
+        const intervalId = setInterval(() => {
+            handleSaveData();
+        }, 5000);
+
+        return () => clearInterval(intervalId);
     }, []);
 
     useEffect(() => {
-        const intervalId = setInterval(() => {
-            handleSaveData();
-        }, 5000); // Call handleSaveData every 5 seconds
-
-        return () => clearInterval(intervalId); // Clear interval on unmount
+        fetchSharedData();
     }, []);
 
     if (isLoading) {
-        return <div>Loading...</div>; // Render loading state
+        return <div>Loading...</div>;
     }
 
     return (
