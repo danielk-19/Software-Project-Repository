@@ -24,7 +24,7 @@ function Sender() {
             const collection = mongodb.db("software-project").collection("datas");
             
             const data = await collection.find({});
-            setLocalData(data.slice(0, -3));
+            setLocalData(data);
             setIsLoading(false);
         } catch (error) {
             console.error("Error fetching data:", error);
