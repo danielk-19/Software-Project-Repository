@@ -10,27 +10,38 @@ function Sender() {
     const { locationInfoData } = useContext(LocationInfoContext);
 
     const [ localData, setLocalData ] = useState([]);
+    const [ isLoading, setIsLoading ] = useState(true); // Add loading state
 
     const app = new Realm.App({ id: REALM_APP_ID });
     const credentials = Realm.Credentials.anonymous();
 
     const fetchSharedData = async () => {
-        const user = await app.logIn(credentials);
-        const mongodb = user.mongoClient("mongodb-atlas");
-        const collection = mongodb.db("software-project").collection("datas");
+        try {
+            const user = await app.logIn(credentials);
+            const mongodb = user.mongoClient("mongodb-atlas");
+            const collection = mongodb.db("software-project").collection("datas");
 
-        const data = await collection.find({});
-        setLocalData(data);
+            const data = await collection.find({});
+            setLocalData(data);
+            setIsLoading(false); // Set loading state to false after data fetch
+        } catch (error) {
+            console.error("Error fetching data:", error);
+            setIsLoading(false); // Ensure loading state is set to false in case of error
+        }
     };
 
     const handleSaveData = async () => {
-        const user = await app.logIn(credentials);
-        const mongodb = user.mongoClient("mongodb-atlas");
-        const collection = mongodb.db("software-project").collection("datas");
+        try {
+            const user = await app.logIn(credentials);
+            const mongodb = user.mongoClient("mongodb-atlas");
+            const collection = mongodb.db("software-project").collection("datas");
 
-        await collection.deleteMany({});
-        await collection.insertMany([{ text: available }, { text: locationInfoData.currentLocation }, { text: locationInfoData.currentTime }]);
-        fetchSharedData();
+            await collection.deleteMany({});
+            await collection.insertMany([{ text: available }, { text: locationInfoData.currentLocation }, { text: locationInfoData.currentTime }]);
+            fetchSharedData(); // Refetch data after saving
+        } catch (error) {
+            console.error("Error saving data:", error);
+        }
     };
 
     useEffect(() => {
@@ -40,18 +51,22 @@ function Sender() {
     useEffect(() => {
         const intervalId = setInterval(() => {
             handleSaveData();
-        }, 1000);
+        }, 5000); // Call handleSaveData every 5 seconds
 
-        return () => clearInterval(intervalId);
+        return () => clearInterval(intervalId); // Clear interval on unmount
     }, []);
+
+    if (isLoading) {
+        return <div>Loading...</div>; // Render loading state
+    }
 
     return (
         <div>
             <h1>Ms. Blair's Location</h1>
             <ul>
-             {localData.map(item => (
-                <li key={item._id}>{item.text}</li>
-             ))}
+                {localData.map(item => (
+                    <li key={item._id}>{item.text}</li>
+                ))}
             </ul>
         </div>
     );
