@@ -3,6 +3,7 @@ import AvailabilityContext from "../context/AvailabilityContext";
 import { LocationInfoContext } from "../context/LocationInfoContext";
 import { useLocation, useNavigate } from 'react-router-dom';
 import * as Realm from "realm-web";
+import './status-style.css';
 
 const REALM_APP_ID = "location-updater-database-xxrruor";
 const app = new Realm.App({ id: REALM_APP_ID });
@@ -14,9 +15,15 @@ function Sender() {
     const navigate = useNavigate();
     const location = useLocation();
     const doUpdate = location.state?.doUpdate;
+    const back = location.state?.back;
+    const scheme = location.state?.scheme;
     
     const [localData, setLocalData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+
+    if (back) {
+        navigate("/");
+    }
 
     const fetchSharedData = async () => {
         try {
@@ -69,8 +76,11 @@ function Sender() {
         return <div>Loading...</div>;
     }
 
+    const predefinedColors = ['white', 'yellow', 'pink', 'orange', 'rainbow'];
+    const isPredefinedColor = scheme && predefinedColors.includes(scheme.toLowerCase());
+
     return (
-        <div className="status-display">
+        <div className={`status-display ${isPredefinedColor ? scheme : "white"}`}>
             <h1>Ms. Blair's Location</h1>
             <div>
                 {localData.map((item, index) => (

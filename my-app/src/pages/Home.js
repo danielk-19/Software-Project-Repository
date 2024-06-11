@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AvailabilityContext from "../context/AvailabilityContext";
 import { LocationInfoContext } from "../context/LocationInfoContext";
 
-function Home() {
+export default function Home() {
     const { available, handleAvailabilityChange } = useContext(AvailabilityContext);
     const { locationInfoData } = useContext(LocationInfoContext);
     const navigate = useNavigate();
@@ -17,15 +17,13 @@ function Home() {
             <h1 className="status-circle">Status<br/>{available}<br />{locationInfoData.currentLocation}<br />{locationInfoData.currentTime}</h1>
             <div className="button-container">
                 <Link to="/form1">
-                    <button className="buttonDesign" onClick={() => handleAvailabilityChange("IN")}>In</button>
+                    <button className="buttonDesign" onClick={() => handleAvailabilityChange("Available")}>Available</button>
                 </Link>
                 <Link to="/form2">
-                    <button className="buttonDesign" onClick={() => handleAvailabilityChange("OUT")}>Out</button>
+                    <button className="buttonDesign" onClick={() => handleAvailabilityChange("Unavailable")}>Unavailable</button>
                 </Link>
             </div>
             <button onClick={confirmUpdate} className="buttonDesign">Update</button>
         </div>
     );
 }
-
-export default Home;

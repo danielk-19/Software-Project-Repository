@@ -1,5 +1,5 @@
 import React from "react";
-import './settings-style.css'
+import './settings-style.css';
 
 const LocationOptions = ({ textBoxes, addTextBox, removeTextBox, onTextBoxChange }) => {
     return (
