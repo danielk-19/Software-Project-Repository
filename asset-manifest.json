@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Software-Project-Repository/static/css/main.b1355606.css",
-    "main.js": "/Software-Project-Repository/static/js/main.1dfad8bb.js",
+    "main.css": "/Software-Project-Repository/static/css/main.feac6325.css",
+    "main.js": "/Software-Project-Repository/static/js/main.827d9d70.js",
     "static/js/453.ed3810f9.chunk.js": "/Software-Project-Repository/static/js/453.ed3810f9.chunk.js",
     "static/media/logo.png": "/Software-Project-Repository/static/media/logo.35139d6db34b155c17b1.png",
     "index.html": "/Software-Project-Repository/index.html",
-    "main.b1355606.css.map": "/Software-Project-Repository/static/css/main.b1355606.css.map",
-    "main.1dfad8bb.js.map": "/Software-Project-Repository/static/js/main.1dfad8bb.js.map",
+    "main.feac6325.css.map": "/Software-Project-Repository/static/css/main.feac6325.css.map",
+    "main.827d9d70.js.map": "/Software-Project-Repository/static/js/main.827d9d70.js.map",
     "453.ed3810f9.chunk.js.map": "/Software-Project-Repository/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b1355606.css",
-    "static/js/main.1dfad8bb.js"
+    "static/css/main.feac6325.css",
+    "static/js/main.827d9d70.js"
   ]
 }
