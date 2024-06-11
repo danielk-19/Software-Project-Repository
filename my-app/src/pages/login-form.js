@@ -39,7 +39,7 @@ function Login({ setLoggedIn }) {
         <div className="login-display">
             <h1>Enter Password</h1>
             {error && <p>{error}</p>}
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="button-container">
                 <input className="password" type="password" placeholder="Password"
                     value={password} onChange={(e) => setPassword(e.target.value)}
                 /><br /><br />

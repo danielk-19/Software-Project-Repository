@@ -110,7 +110,6 @@ body {
   color: white;
   border-radius: 5px;
   background-color: rgb(80, 78, 74);
-  /*border: none;*/
   margin-bottom: 10px;
   cursor: pointer;
   font-size: 18px;
@@ -160,6 +159,6 @@ body {
   border: none;
   border-radius: 5px;
   background-color: #262930;
-  width: 30%;
+  width: 40vmin;
   font-size: 18px;
 }
