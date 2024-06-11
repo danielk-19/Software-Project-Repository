@@ -81,12 +81,14 @@ function Sender() {
 
     return (
         <div className={`status-display ${isPredefinedColor ? scheme : "rainbow"}`}>
+            <br /><br /><br /><br /><br /><br />
             <h1>Where's Ms. Blair?</h1>
             <div>
                 {localData.map((item, index) => (
                     <h2 key={index}>{item.text}</h2>
                 ))}
             </div>
+            <br /><br /><br /><br /><br /><br />
         </div>
     );
 }
