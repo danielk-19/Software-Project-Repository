@@ -21,6 +21,10 @@ export default function App() {
     setShowSettings(!showSettings);
   };
 
+  if (window.location.href === "https://danielk-19.github.io/Software-Project-Repository/#/data-sender") {
+    setLoggedIn(true);
+  }
+
   return (
     <LocationInfoProvider>
     <SettingsProvider>
