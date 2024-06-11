@@ -61,7 +61,7 @@ export default function Form1() {
             </div>
             )}
             <br />
-            <input type="button" value="" className="buttonDesign" onClick={clearLocal}>Clear</input>
+            <button value="" className="buttonDesign" onClick={clearLocal}>Clear</button>
             <input type="submit" value="Apply" className="buttonDesign" />
         </form>
         </div>
