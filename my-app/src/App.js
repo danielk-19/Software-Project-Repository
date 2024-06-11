@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import logo from './logo.png';
 import settingsIcon from './settings-icon.png';
@@ -21,9 +21,11 @@ export default function App() {
     setShowSettings(!showSettings);
   };
 
-  if (window.location.href === "https://danielk-19.github.io/Software-Project-Repository/#/data-sender") {
-    setLoggedIn(true);
-  }
+  useEffect(() => {
+    if (window.location.href === "https://danielk-19.github.io/Software-Project-Repository/#/data-sender") {
+      setLoggedIn(true);
+    }
+  }, []);
 
   return (
     <LocationInfoProvider>
