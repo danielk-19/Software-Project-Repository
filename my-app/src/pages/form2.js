@@ -22,6 +22,11 @@ export default function Form2() {
     updateLocationInfoData(localLocationInfo);
   };
 
+  const clearLocal = (event) => {
+    handleTimeChange(event);
+    handleLocationChange(event);
+  };
+
     return (
         <div className="center">
             <div className="button-container">
@@ -61,6 +66,7 @@ export default function Form2() {
                 </div>
                 )}
                 <br />
+                <input type="button" value="" className="buttonDesign" onClick={clearLocal}>Clear</input>
                 <input type="submit" value="Apply" className="buttonDesign" />
             </form>
             </div>
