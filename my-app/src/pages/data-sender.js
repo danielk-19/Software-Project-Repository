@@ -80,8 +80,8 @@ function Sender() {
     const isPredefinedColor = scheme && predefinedColors.includes(scheme.toLowerCase());
 
     return (
-        <div className={`status-display ${isPredefinedColor ? scheme : "white"}`}>
-            <h1>Ms. Blair's Location</h1>
+        <div className={`status-display ${isPredefinedColor ? scheme : "rainbow"}`}>
+            <h1>Where's Ms. Blair?</h1>
             <div>
                 {localData.map((item, index) => (
                     <h2 key={index}>{item.text}</h2>

@@ -20,6 +20,14 @@
     background-color: orange;
 }
 
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 .status-display.rainbow {
-    background-color: white;
+    background: linear-gradient(45deg, #ff0000, #ff7700, #ffdd00, #00ff00, #0000ff, #7700ff, #ff00ff);
+    background-size: 400% 400%;
+    animation: rainbow 10s ease infinite; /* Adjust the animation duration as needed */
 }
