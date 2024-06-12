@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Software-Project-Repository/static/css/main.34bc84a7.css",
-    "main.js": "/Software-Project-Repository/static/js/main.ef647512.js",
+    "main.css": "/Software-Project-Repository/static/css/main.ee41a36b.css",
+    "main.js": "/Software-Project-Repository/static/js/main.2a537a7c.js",
     "static/js/453.ed3810f9.chunk.js": "/Software-Project-Repository/static/js/453.ed3810f9.chunk.js",
     "static/media/logo.png": "/Software-Project-Repository/static/media/logo.35139d6db34b155c17b1.png",
     "index.html": "/Software-Project-Repository/index.html",
-    "main.34bc84a7.css.map": "/Software-Project-Repository/static/css/main.34bc84a7.css.map",
-    "main.ef647512.js.map": "/Software-Project-Repository/static/js/main.ef647512.js.map",
+    "main.ee41a36b.css.map": "/Software-Project-Repository/static/css/main.ee41a36b.css.map",
+    "main.2a537a7c.js.map": "/Software-Project-Repository/static/js/main.2a537a7c.js.map",
     "453.ed3810f9.chunk.js.map": "/Software-Project-Repository/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.34bc84a7.css",
-    "static/js/main.ef647512.js"
+    "static/css/main.ee41a36b.css",
+    "static/js/main.2a537a7c.js"
   ]
 }
