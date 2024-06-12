@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from "react";
-import AvailabilityContext from "../context/AvailabilityContext";
 import { LocationInfoContext } from "../context/LocationInfoContext";
 import { useLocation, useNavigate } from 'react-router-dom';
 import * as Realm from "realm-web";
@@ -10,7 +9,6 @@ const app = new Realm.App({ id: REALM_APP_ID });
 const credentials = Realm.Credentials.anonymous();
 
 function Sender() {
-    const { available } = useContext(AvailabilityContext);
     const { locationInfoData } = useContext(LocationInfoContext);
     const navigate = useNavigate();
     const location = useLocation();
@@ -48,7 +46,6 @@ function Sender() {
             
             await collection.deleteMany({});
             await collection.insertMany([
-                { text: available },
                 { text: locationInfoData.currentLocation },
                 { text: locationInfoData.currentTime }
             ]);
@@ -70,7 +67,7 @@ function Sender() {
 
         updateAndFetchData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [doUpdate, available, locationInfoData]);
+    }, [doUpdate, locationInfoData]);
 
     if (isLoading) {
         return <div>Loading...</div>;

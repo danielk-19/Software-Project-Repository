@@ -27,7 +27,7 @@
 }
 
 .status-display.rainbow {
-    background: linear-gradient(45deg, #ff0000, #ff7700, #ffdd00, #00ff00, #0000ff, #7700ff, #ff00ff);
+    background: linear-gradient(45deg, #ff5454, #ffa454, #ffe855, #50ff50, #4d4dff, #a04dff, #ff4bff);
     background-size: 400% 400%;
-    animation: rainbow 10s ease infinite; /* Adjust the animation duration as needed */
+    animation: rainbow 15s ease infinite; /* Adjust the animation duration as needed */
 }

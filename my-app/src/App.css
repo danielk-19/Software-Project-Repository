@@ -95,7 +95,7 @@ body {
   justify-content: center;
   color: white;
   font-size: 36px;
-  margin-bottom: 15vmin;
+  margin-bottom: 5vmin;
   border: 2px solid rgb(255, 182, 193);
 }
 
@@ -161,4 +161,36 @@ body {
   background-color: #262930;
   width: 40vmin;
   font-size: 18px;
+}
+
+#location-editor {
+  display: inline-block;
+  color: white;
+  border-radius: 5px;
+  background-color: rgb(80, 78, 74);
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  width: 220px;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+  border: 2px solid rgb(255, 182, 193);
+  margin-bottom: 3vmin;
+}
+
+.form-input {
+  font-size: 24px;
+  color: white;
+}
+
+.form-input-box {
+  border-radius: 5px;
+  border: none;
+  background-color: #191c22;
+  color: white;
+  height: 24px;
+  width: 15vmin;
+  margin-left: 5px;
 }
